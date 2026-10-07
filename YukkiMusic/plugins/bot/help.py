@@ -111,6 +111,7 @@ async def helper_cb(client, CallbackQuery, _):
         "hb13": helpers.HELP_13,
         "hb14": helpers.HELP_14,
         "hb15": helpers.HELP_15,
+        "hb16": helpers.HELP_16,
     }
 
     text = pages.get(cb)
