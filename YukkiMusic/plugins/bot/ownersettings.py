@@ -1,6 +1,8 @@
+import asyncio
 import json
 import os
 import re
+import sys
 
 import config
 from pyrogram import filters
@@ -80,6 +82,7 @@ OWNER_COMMANDS = [
     "setaudioimage", "setvideoimage", "setstreamimage",
     "setyoutubeimage", "setspotifyartistimage", "setspotifyalbumimage",
     "setspotifyplaylistimage",
+    "restart", "reload", "refresh",
 ]
 
 
@@ -133,6 +136,16 @@ async def owner_settings(client, message: Message):
         return await message.reply_text(
             f"✅ {target} image updated.\n• Owner only"
         )
+
+    if command in ("restart", "reload", "refresh"):
+        label = command.upper()
+        await message.reply_text(
+            f"🔄 {label} requested. Restarting bot...\\n\\n"
+            "Please wait a few seconds and try again."
+        )
+        await asyncio.sleep(1)
+        os.execv(sys.executable, [sys.executable] + sys.argv)
+        return
 
     if command == "setsupport":
         if len(args) != 1 or not _url(args[0]):
