@@ -144,19 +144,19 @@ async def owner_settings(client, message: Message):
         config.CLONE_QR_IMAGE = path
         _set("CLONE_QR_IMAGE", path)
         return await message.reply_text(
-            "✅ Clone payment QR updated.\\n\\n"
-            "• This QR will be shown in the ₹399 clone payment flow\\n"
+            "✅ Clone payment QR updated.\n\n"
+            "• This QR will be shown in the ₹399 clone payment flow\n"
             "• Owner only"
         )
 
     if command in ("restart", "reloadall", "refresh"):
         label = "RELOAD ALL" if command == "reloadall" else command.upper()
         await message.reply_text(
-            f"🔄 {label} requested. Full bot reload starting...\\n\\n"
-            "• Music/VC process will restart\\n"
-            "• Group handlers will reload\\n"
-            "• Voice-chat glitches should clear\\n"
-            "• Bot will reconnect automatically\\n\\n"
+            f"🔄 {label} requested. Full bot reload starting...\n\n"
+            "• Music/VC process will restart\n"
+            "• Group handlers will reload\n"
+            "• Voice-chat glitches should clear\n"
+            "• Bot will reconnect automatically\n\n"
             "Please wait a few seconds."
         )
         await asyncio.sleep(1)
