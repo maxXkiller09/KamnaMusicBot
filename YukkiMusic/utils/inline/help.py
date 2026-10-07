@@ -15,79 +15,66 @@ from YukkiMusic import app
 
 
 def help_pannel(_, START: Union[bool, int] = None):
-    first = [
-        InlineKeyboardButton(
-            text=_["CLOSEMENU_BUTTON"], callback_data=f"close"
-        )
+    labels = [
+        "ADMIN", "AUTH", "G-CAST",
+        "BL-CHAT", "BL-USER", "C-PLAY",
+        "G-BAN", "LOOP", "LOG",
+        "PING", "PLAY", "SHUFFLE",
+        "SEEK", "SONG", "SPEED",
     ]
-    second = [
-        InlineKeyboardButton(
-            text=_["BACK_BUTTON"],
-            callback_data=f"settingsback_helper",
-        ),
-        InlineKeyboardButton(
-            text=_["CLOSEMENU_BUTTON"], callback_data=f"close"
-        ),
-    ]
-    mark = second if START else first
-    upl = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton(
-                    text=_["H_B_1"],
-                    callback_data="help_callback hb1",
-                ),
-                InlineKeyboardButton(
-                    text=_["H_B_2"],
-                    callback_data="help_callback hb2",
-                ),
-            ],
-            [
-                InlineKeyboardButton(
-                    text=_["H_B_3"],
-                    callback_data="help_callback hb3",
-                ),
-                InlineKeyboardButton(
-                    text=_["H_B_4"],
-                    callback_data="help_callback hb4",
-                ),
-            ],
-            [
-                InlineKeyboardButton(
-                    text=_["H_B_6"],
-                    callback_data="help_callback hb5",
-                ),
-            ],
-            mark,
-        ]
-    )
-    return upl
+
+    rows = []
+    for start in range(0, len(labels), 3):
+        rows.append([
+            InlineKeyboardButton(
+                text=labels[start + offset],
+                callback_data=f"help_callback hb{start + offset + 1}",
+            )
+            for offset in range(3)
+        ])
+
+    if START:
+        rows.append([
+            InlineKeyboardButton(
+                text=_["BACK_BUTTON"],
+                callback_data="settings_back_helper",
+            ),
+            InlineKeyboardButton(
+                text=_["CLOSEMENU_BUTTON"],
+                callback_data="close",
+            ),
+        ])
+    else:
+        rows.append([
+            InlineKeyboardButton(
+                text=_["CLOSEMENU_BUTTON"],
+                callback_data="close",
+            )
+        ])
+
+    return InlineKeyboardMarkup(rows)
 
 
 def help_back_markup(_):
-    upl = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton(
-                    text=_["BACK_BUTTON"],
-                    callback_data=f"settings_back_helper",
-                ),
-                InlineKeyboardButton(
-                    text=_["CLOSE_BUTTON"], callback_data=f"close"
-                ),
-            ]
-        ]
+    return InlineKeyboardMarkup(
+        [[
+            InlineKeyboardButton(
+                text=_["BACK_BUTTON"],
+                callback_data="settings_back_helper",
+            ),
+            InlineKeyboardButton(
+                text=_["CLOSE_BUTTON"],
+                callback_data="close",
+            ),
+        ]]
     )
-    return upl
 
 
 def private_help_panel(_):
-    buttons = [
-        [
-            InlineKeyboardButton(
-                text=_["S_B_1"],
-                url=f"https://t.me/{app.username}?start=help",
-            ),
-        ],
-    ]
+    buttons = [[
+        InlineKeyboardButton(
+            text=_["S_B_1"],
+            url=f"https://t.me/{app.username}?start=help",
+        ),
+    ]]
     return buttons
