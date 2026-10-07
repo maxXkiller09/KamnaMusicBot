@@ -250,6 +250,32 @@ SPOTIFY_PLAYLIST_IMG_URL = getenv(
 )
 
 
+# Apply owner settings saved by the bot at runtime.
+try:
+    _owner = _OWNER_SETTINGS
+    OWNER_ID = _owner.get("OWNER_ID", OWNER_ID)
+    MUSIC_BOT_NAME = _owner.get("MUSIC_BOT_NAME", MUSIC_BOT_NAME)
+    SUPPORT_CHANNEL = _owner.get("SUPPORT_CHANNEL", SUPPORT_CHANNEL)
+    SUPPORT_GROUP = _owner.get("SUPPORT_GROUP", SUPPORT_GROUP)
+    GITHUB_REPO = _owner.get("GITHUB_REPO", GITHUB_REPO)
+    LOG_GROUP_ID = int(_owner.get("LOG_GROUP_ID", LOG_GROUP_ID))
+    START_IMG_URL = _owner.get("START_IMG_URL", START_IMG_URL)
+    PING_IMG_URL = _owner.get("PING_IMG_URL", PING_IMG_URL)
+    PLAYLIST_IMG_URL = _owner.get("PLAYLIST_IMG_URL", PLAYLIST_IMG_URL)
+    GLOBAL_IMG_URL = _owner.get("GLOBAL_IMG_URL", GLOBAL_IMG_URL)
+    STATS_IMG_URL = _owner.get("STATS_IMG_URL", STATS_IMG_URL)
+    TELEGRAM_AUDIO_URL = _owner.get("TELEGRAM_AUDIO_URL", TELEGRAM_AUDIO_URL)
+    TELEGRAM_VIDEO_URL = _owner.get("TELEGRAM_VIDEO_URL", TELEGRAM_VIDEO_URL)
+    STREAM_IMG_URL = _owner.get("STREAM_IMG_URL", STREAM_IMG_URL)
+    YOUTUBE_IMG_URL = _owner.get("YOUTUBE_IMG_URL", YOUTUBE_IMG_URL)
+    SPOTIFY_ARTIST_IMG_URL = _owner.get("SPOTIFY_ARTIST_IMG_URL", SPOTIFY_ARTIST_IMG_URL)
+    SPOTIFY_ALBUM_IMG_URL = _owner.get("SPOTIFY_ALBUM_IMG_URL", SPOTIFY_ALBUM_IMG_URL)
+    SPOTIFY_PLAYLIST_IMG_URL = _owner.get("SPOTIFY_PLAYLIST_IMG_URL", SPOTIFY_PLAYLIST_IMG_URL)
+    CLONE_QR_IMAGE = _owner.get("CLONE_QR_IMAGE", CLONE_QR_IMAGE)
+except Exception:
+    pass
+
+
 def time_to_seconds(time):
     stringt = str(time)
     return sum(
@@ -293,7 +319,7 @@ if GITHUB_REPO:
 
 
 if PING_IMG_URL:
-    if PING_IMG_URL != "assets/Ping.jpeg":
+    if PING_IMG_URL != "assets/Ping.jpeg" and not PING_IMG_URL.startswith(("assets/", "./")):
         if not re.match("(?:http|https)://", PING_IMG_URL):
             print(
                 "[ERROR] - Your PING_IMG_URL url is wrong. Please ensure that it starts with https://"
@@ -301,7 +327,7 @@ if PING_IMG_URL:
             sys.exit()
 
 if PLAYLIST_IMG_URL:
-    if PLAYLIST_IMG_URL != "assets/Playlist.jpeg":
+    if PLAYLIST_IMG_URL != "assets/Playlist.jpeg" and not PLAYLIST_IMG_URL.startswith(("assets/", "./")):
         if not re.match("(?:http|https)://", PLAYLIST_IMG_URL):
             print(
                 "[ERROR] - Your PLAYLIST_IMG_URL url is wrong. Please ensure that it starts with https://"
@@ -309,7 +335,7 @@ if PLAYLIST_IMG_URL:
             sys.exit()
 
 if GLOBAL_IMG_URL:
-    if GLOBAL_IMG_URL != "assets/Global.jpeg":
+    if GLOBAL_IMG_URL != "assets/Global.jpeg" and not GLOBAL_IMG_URL.startswith(("assets/", "./")):
         if not re.match("(?:http|https)://", GLOBAL_IMG_URL):
             print(
                 "[ERROR] - Your GLOBAL_IMG_URL url is wrong. Please ensure that it starts with https://"
@@ -318,7 +344,7 @@ if GLOBAL_IMG_URL:
 
 
 if STATS_IMG_URL:
-    if STATS_IMG_URL != "assets/Stats.jpeg":
+    if STATS_IMG_URL != "assets/Stats.jpeg" and not STATS_IMG_URL.startswith(("assets/", "./")):
         if not re.match("(?:http|https)://", STATS_IMG_URL):
             print(
                 "[ERROR] - Your STATS_IMG_URL url is wrong. Please ensure that it starts with https://"
@@ -327,7 +353,7 @@ if STATS_IMG_URL:
 
 
 if TELEGRAM_AUDIO_URL:
-    if TELEGRAM_AUDIO_URL != "assets/Audio.jpeg":
+    if TELEGRAM_AUDIO_URL != "assets/Audio.jpeg" and not TELEGRAM_AUDIO_URL.startswith(("assets/", "./")):
         if not re.match("(?:http|https)://", TELEGRAM_AUDIO_URL):
             print(
                 "[ERROR] - Your TELEGRAM_AUDIO_URL url is wrong. Please ensure that it starts with https://"
@@ -336,7 +362,7 @@ if TELEGRAM_AUDIO_URL:
 
 
 if STREAM_IMG_URL:
-    if STREAM_IMG_URL != "assets/Stream.jpeg":
+    if STREAM_IMG_URL != "assets/Stream.jpeg" and not STREAM_IMG_URL.startswith(("assets/", "./")):
         if not re.match("(?:http|https)://", STREAM_IMG_URL):
             print(
                 "[ERROR] - Your STREAM_IMG_URL url is wrong. Please ensure that it starts with https://"
@@ -345,7 +371,7 @@ if STREAM_IMG_URL:
 
 
 if SOUNCLOUD_IMG_URL:
-    if SOUNCLOUD_IMG_URL != "assets/Soundcloud.jpeg":
+    if SOUNCLOUD_IMG_URL != "assets/Soundcloud.jpeg" and not SOUNCLOUD_IMG_URL.startswith(("assets/", "./")):
         if not re.match("(?:http|https)://", SOUNCLOUD_IMG_URL):
             print(
                 "[ERROR] - Your SOUNCLOUD_IMG_URL url is wrong. Please ensure that it starts with https://"
@@ -353,7 +379,7 @@ if SOUNCLOUD_IMG_URL:
             sys.exit()
 
 if YOUTUBE_IMG_URL:
-    if YOUTUBE_IMG_URL != "assets/Youtube.jpeg":
+    if YOUTUBE_IMG_URL != "assets/Youtube.jpeg" and not YOUTUBE_IMG_URL.startswith(("assets/", "./")):
         if not re.match("(?:http|https)://", YOUTUBE_IMG_URL):
             print(
                 "[ERROR] - Your YOUTUBE_IMG_URL url is wrong. Please ensure that it starts with https://"
@@ -362,7 +388,7 @@ if YOUTUBE_IMG_URL:
 
 
 if TELEGRAM_VIDEO_URL:
-    if TELEGRAM_VIDEO_URL != "assets/Video.jpeg":
+    if TELEGRAM_VIDEO_URL != "assets/Video.jpeg" and not TELEGRAM_VIDEO_URL.startswith(("assets/", "./")):
         if not re.match("(?:http|https)://", TELEGRAM_VIDEO_URL):
             print(
                 "[ERROR] - Your TELEGRAM_VIDEO_URL url is wrong. Please ensure that it starts with https://"
@@ -370,7 +396,7 @@ if TELEGRAM_VIDEO_URL:
             sys.exit()
 
 
-if not MUSIC_BOT_NAME.isascii():
+if MUSIC_BOT_NAME and not MUSIC_BOT_NAME.isascii():
     print(
         "[ERROR] - You've defined MUSIC_BOT_NAME wrong. Please don't use any special characters or Special font for this... Keep it simple and small."
     )
