@@ -170,6 +170,20 @@ autoclean = []
 
 
 # Images
+
+# Clone payment QR (owner-set, runtime file)
+OWNER_SETTINGS_FILE = "data/owner_settings.json"
+try:
+    with open(OWNER_SETTINGS_FILE, "r", encoding="utf-8") as _f:
+        _OWNER_SETTINGS = json.load(_f)
+except Exception:
+    _OWNER_SETTINGS = {}
+
+CLONE_QR_IMAGE = _OWNER_SETTINGS.get(
+    "CLONE_QR_IMAGE",
+    getenv("CLONE_QR_IMAGE", None),
+)
+
 START_IMG_URL = getenv(
     "START_IMG_URL",
     "assets/Ping.jpeg",
