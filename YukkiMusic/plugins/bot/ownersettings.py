@@ -82,7 +82,7 @@ OWNER_COMMANDS = [
     "setaudioimage", "setvideoimage", "setstreamimage",
     "setyoutubeimage", "setspotifyartistimage", "setspotifyalbumimage",
     "setspotifyplaylistimage", "setcloneqr",
-    "restart", "reload", "reloadall", "refresh",
+    "restart", "reloadall", "refresh",
 ]
 
 
@@ -149,7 +149,7 @@ async def owner_settings(client, message: Message):
             "• Owner only"
         )
 
-    if command in ("restart", "reload", "reloadall", "refresh"):
+    if command in ("restart", "reloadall", "refresh"):
         label = "RELOAD ALL" if command == "reloadall" else command.upper()
         await message.reply_text(
             f"🔄 {label} requested. Full bot reload starting...\\n\\n"
