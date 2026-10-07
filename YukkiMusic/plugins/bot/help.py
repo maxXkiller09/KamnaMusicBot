@@ -7,7 +7,6 @@
 #
 # All rights reserved.
 
-
 from typing import Union
 
 from pyrogram import filters, types
@@ -19,12 +18,9 @@ from YukkiMusic import app
 from YukkiMusic.misc import SUDOERS
 from YukkiMusic.utils import help_pannel
 from YukkiMusic.utils.database import get_lang, is_commanddelete_on
-from YukkiMusic.utils.decorators.language import (LanguageStart,
-                                                  languageCB)
-from YukkiMusic.utils.inline.help import (help_back_markup,
-                                          private_help_panel)
+from YukkiMusic.utils.decorators.language import LanguageStart, languageCB
+from YukkiMusic.utils.inline.help import help_back_markup, private_help_panel
 
-### Command
 HELP_COMMAND = get_command("HELP_COMMAND")
 
 
@@ -90,35 +86,44 @@ async def help_com_group(client, message: Message, _):
 @languageCB
 async def helper_cb(client, CallbackQuery, _):
     callback_data = CallbackQuery.data.strip()
-    cb = callback_data.split(None, 1)[1]
-    keyboard = help_back_markup(_)
-    if cb == "hb5":
-        if CallbackQuery.from_user.id not in SUDOERS:
-            return await CallbackQuery.answer(
-                "Only for Sudo Users", show_alert=True
-            )
-        else:
-            await CallbackQuery.edit_message_text(
-                helpers.HELP_5, reply_markup=keyboard
-            )
-            return await CallbackQuery.answer()
+    parts = callback_data.split(None, 1)
+    if len(parts) < 2:
+        return
+    cb = parts[1]
+
+    if cb == "hb5" and CallbackQuery.from_user.id not in SUDOERS:
+        return await CallbackQuery.answer(
+            "This category is restricted.", show_alert=True
+        )
+
     try:
         await CallbackQuery.answer()
     except:
         pass
-    if cb == "hb1":
-        await CallbackQuery.edit_message_text(
-            helpers.HELP_1, reply_markup=keyboard
-        )
-    elif cb == "hb2":
-        await CallbackQuery.edit_message_text(
-            helpers.HELP_2, reply_markup=keyboard
-        )
-    elif cb == "hb3":
-        await CallbackQuery.edit_message_text(
-            helpers.HELP_3, reply_markup=keyboard
-        )
-    elif cb == "hb4":
-        await CallbackQuery.edit_message_text(
-            helpers.HELP_4, reply_markup=keyboard
-        )
+
+    pages = {
+        "hb1": helpers.HELP_1,
+        "hb2": helpers.HELP_2,
+        "hb3": helpers.HELP_3,
+        "hb4": helpers.HELP_4,
+        "hb5": helpers.HELP_5,
+        "hb6": helpers.HELP_6,
+        "hb7": helpers.HELP_7,
+        "hb8": helpers.HELP_8,
+        "hb9": helpers.HELP_9,
+        "hb10": helpers.HELP_10,
+        "hb11": helpers.HELP_11,
+        "hb12": helpers.HELP_12,
+        "hb13": helpers.HELP_13,
+        "hb14": helpers.HELP_14,
+        "hb15": helpers.HELP_15,
+    }
+
+    text = pages.get(cb)
+    if not text:
+        return
+
+    await CallbackQuery.edit_message_text(
+        text,
+        reply_markup=help_back_markup(_),
+    )
