@@ -8,3 +8,8 @@ cache/
 downloads/
 __pycache__/
 *.session-journal
+
+# Runtime owner settings and uploaded welcome media
+data/owner_settings.json
+assets/Welcome.jpg
+assets/Welcome.mp4
