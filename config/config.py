@@ -7,6 +7,8 @@
 #
 # All rights reserved.
 
+import json
+import os
 import re
 import sys
 from os import getenv
