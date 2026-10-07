@@ -81,7 +81,7 @@ OWNER_COMMANDS = [
     "setplaylistimage", "setglobalimage", "setstatsimage",
     "setaudioimage", "setvideoimage", "setstreamimage",
     "setyoutubeimage", "setspotifyartistimage", "setspotifyalbumimage",
-    "setspotifyplaylistimage",
+    "setspotifyplaylistimage", "setcloneqr",
     "restart", "reload", "reloadall", "refresh",
 ]
 
@@ -135,6 +135,18 @@ async def owner_settings(client, message: Message):
         _set(key, path)
         return await message.reply_text(
             f"✅ {target} image updated.\n• Owner only"
+        )
+
+    if command == "setcloneqr":
+        path = await _set_media(message, "CloneQR")
+        if path.startswith("❌"):
+            return await message.reply_text(path)
+        config.CLONE_QR_IMAGE = path
+        _set("CLONE_QR_IMAGE", path)
+        return await message.reply_text(
+            "✅ Clone payment QR updated.\\n\\n"
+            "• This QR will be shown in the ₹399 clone payment flow\\n"
+            "• Owner only"
         )
 
     if command in ("restart", "reload", "reloadall", "refresh"):
