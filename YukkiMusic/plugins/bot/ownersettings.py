@@ -75,7 +75,7 @@ async def _set_media(message: Message, target):
 OWNER_COMMANDS = [
     "setwelcome", "setimage", "setsupport", "setupdates",
     "setowner", "addowner", "delowner", "setbotname",
-    "setbotlink", "setgithub", "setloggroup", "settings",
+    "setbotlink", "setgithub", "setloggroup", "botsettings",
     "setplaylistimage", "setglobalimage", "setstatsimage",
     "setaudioimage", "setvideoimage", "setstreamimage",
     "setyoutubeimage", "setspotifyartistimage", "setspotifyalbumimage",
@@ -205,7 +205,7 @@ async def owner_settings(client, message: Message):
         _set("LOG_GROUP_ID", config.LOG_GROUP_ID)
         return await message.reply_text("✅ Log group updated.")
 
-    if command == "settings":
+    if command == "botsettings":
         data = _load()
         return await message.reply_text(
             "⚙️ OWNER SETTINGS\n\n"
