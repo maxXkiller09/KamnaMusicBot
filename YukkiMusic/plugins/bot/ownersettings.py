@@ -82,7 +82,7 @@ OWNER_COMMANDS = [
     "setaudioimage", "setvideoimage", "setstreamimage",
     "setyoutubeimage", "setspotifyartistimage", "setspotifyalbumimage",
     "setspotifyplaylistimage",
-    "restart", "reload", "refresh",
+    "restart", "reload", "reloadall", "refresh",
 ]
 
 
@@ -137,11 +137,15 @@ async def owner_settings(client, message: Message):
             f"✅ {target} image updated.\n• Owner only"
         )
 
-    if command in ("restart", "reload", "refresh"):
-        label = command.upper()
+    if command in ("restart", "reload", "reloadall", "refresh"):
+        label = "RELOAD ALL" if command == "reloadall" else command.upper()
         await message.reply_text(
-            f"🔄 {label} requested. Restarting bot...\\n\\n"
-            "Please wait a few seconds and try again."
+            f"🔄 {label} requested. Full bot reload starting...\\n\\n"
+            "• Music/VC process will restart\\n"
+            "• Group handlers will reload\\n"
+            "• Voice-chat glitches should clear\\n"
+            "• Bot will reconnect automatically\\n\\n"
+            "Please wait a few seconds."
         )
         await asyncio.sleep(1)
         os.execv(sys.executable, [sys.executable] + sys.argv)
