@@ -7,114 +7,120 @@
 #
 # All rights reserved.
 
-HELP_1 = """🛡️ **ADMIN COMMANDS**
+HELP_1 = """✦ **ADMIN COMMANDS ✦**
 
-/pause — Pause the playing music.
-/resume — Resume paused music.
-/mute — Mute the playing music.
-/unmute — Unmute the playing music.
-/skip — Skip the current track.
-/stop — Stop the current playback.
+◯ /pause : Pauses the currently playing music.
+◯ /resume : Resumes paused music.
+◯ /mute : Mutes the assistant in the voice chat.
+◯ /unmute : Unmutes the assistant.
+◯ /skip : Skips the current track.
+◯ /stop : Stops music and clears the current playback.
+◯ /shuffle : Randomly shuffles the current queue.
+◯ /seek [time] : Moves playback forward to the given time.
+◯ /seekback [time] : Moves playback backward.
+◯ /restart : Owner-only complete bot restart.
+◯ /refresh : Owner-only complete bot refresh.
 
-**Channel aliases:** /cpause /cresume /cmute /cunmute /cskip /cstop"""
+**Channel aliases:** /cpause /cresume /cmute /cunmute /cskip /cstop /cshuffle /cseek /cseekback"""
 
-HELP_2 = """🔐 **AUTH COMMANDS**
+HELP_2 = """✦ **AUTH COMMANDS ✦**
 
-/auth [user] — Add a user to the group AUTH list.
-/unauth [user] — Remove a user from the AUTH list.
-/authusers — Check the AUTH users of the group.
+◯ /auth [user] : Adds a user to this group's AUTH list.
+◯ /unauth [user] : Removes a user from the AUTH list.
+◯ /authusers : Shows the authorized users of the group.
 
-AUTH users can use permitted admin playback commands without group-admin rights."""
+AUTH users can use the permitted admin playback commands without needing group-admin rights."""
 
-HELP_3 = """📡 **G-CAST COMMANDS**
+HELP_3 = """✦ **G-CAST COMMANDS ✦**
 
-/channelplay [chat] — Connect a channel to a group for voice-chat streaming.
-/channelplay disable — Disable channel-play mode.
-/cplay — Play in channel mode.
-/cplayforce — Force play in channel mode."""
+◯ /channelplay [chat] : Connects a channel with the group for channel voice-chat playback.
+◯ /channelplay disable : Disables channel-play mode.
+◯ /cplay [query] : Plays a query in channel-play mode.
+◯ /cplayforce [query] : Force-plays a query in channel-play mode.
 
-HELP_4 = """🚫 **BL-CHAT COMMANDS**
+**c = Channel Play**"""
 
-/blacklistchat [CHAT_ID] — Blacklist a chat.
-/whitelistchat [CHAT_ID] — Remove a chat from blacklist.
-/blacklistedchat — View blacklisted chats.
+HELP_4 = """✦ **BL-CHAT COMMANDS ✦**
 
-These are management commands and follow the bot's permission system."""
+◯ /blacklistchat [CHAT_ID] : Blocks a chat from using the music bot.
+◯ /whitelistchat [CHAT_ID] : Removes a chat from the blacklist.
+◯ /blacklistedchat : Shows all blacklisted chats."""
 
-HELP_5 = """🚫 **BL-USER COMMANDS**
+HELP_5 = """✦ **BL-USER COMMANDS ✦**
 
-/block [user] — Block a user from using the bot.
-/unblock [user] — Remove a user from the blocked list.
-/blockedusers — Check the blocked-user list."""
+◯ /block [user] : Blocks a user from using bot commands.
+◯ /unblock [user] : Removes a user from the blocked list.
+◯ /blockedusers : Shows the blocked-user list."""
 
-HELP_6 = """🎙️ **C-PLAY COMMANDS**
+HELP_6 = """✦ **C-PLAY COMMANDS ✦**
 
-/cplay [query] — Play a query in channel-play mode.
-/cplayforce [query] — Force play without clearing the queue.
-/channelplay [chat] — Link channel playback to a group.
+◯ /cplay [query] : Plays music through channel-play mode.
+◯ /cplayforce [query] : Force-plays the requested track immediately.
+◯ /channelplay [chat] : Links channel playback to a group.
 
-**c** means channel play."""
+**c = Channel Play**"""
 
-HELP_7 = """⛔ **G-BAN COMMANDS**
+HELP_7 = """✦ **G-BAN COMMANDS ✦**
 
-/gban [user] — Globally ban a user from served chats.
-/ungban [user] — Remove a global ban.
-/gbannedusers — View globally banned users.
+◯ /gban [user] : Globally bans a user from the bot's served chats.
+◯ /ungban [user] : Removes a global ban.
+◯ /gbannedusers : Shows the globally banned-user list."""
 
-These commands require the appropriate management permission."""
+HELP_8 = """✦ **LOOP COMMANDS ✦**
 
-HELP_8 = """🔁 **LOOP COMMANDS**
+◯ /loop enable : Enables loop playback.
+◯ /loop disable : Disables loop playback.
+◯ /loop [1-10] : Repeats the current track the selected number of times.
+◯ /cloop enable/disable : Controls loop mode for channel playback.
+◯ /cloop [1-10] : Repeats channel-play music the selected number of times."""
 
-/loop [enable/disable] — Toggle loop playback.
-/loop [1-10] — Repeat the current track the selected number of times.
-/cloop [enable/disable] — Channel-play loop mode.
-/cloop [1-10] — Repeat in channel-play mode."""
+HELP_9 = """✦ **LOG COMMANDS ✦**
 
-HELP_9 = """📝 **LOG COMMANDS**
+◯ /logger enable/disable : Enables or disables query logging.
+◯ /get_log [lines] : Gets recent bot log lines.
 
-/logger [enable/disable] — Control query logging.
-/get_log [lines] — View recent bot log lines.
+⚠️ Log commands are intended for authorized management use."""
 
-Log-management commands require authorized management access."""
+HELP_10 = """✦ **PING & STATS ✦**
 
-HELP_10 = """📶 **PING COMMANDS**
+◯ /ping : Shows bot response time and basic system/runtime stats.
+◯ /stats : Shows overall bot statistics.
+◯ /activevoice : Shows currently active voice chats.
+◯ /activevideo : Shows currently active video calls."""
 
-/ping — Check bot response, RAM/CPU and basic runtime status.
+HELP_11 = """✦ **PLAY COMMANDS ✦**
 
-Use this for a quick health check without exposing private configuration."""
+◯ /play [query] : Searches and starts playing music.
+◯ /vplay [query] : Plays a video in voice chat.
+◯ /playforce [query] : Force-plays the requested track immediately.
+◯ /vplayforce [query] : Force-plays a video immediately.
+◯ /playlist : Shows saved server playlists.
+◯ /deleteplaylist : Deletes a saved playlist.
+◯ /channelplay [chat] : Enables channel-play setup.
 
-HELP_11 = """▶️ **PLAY COMMANDS**
+**v = Video Play • force = Immediate Play**"""
 
-/play [query] — Play music.
-/vplay [query] — Play video.
-/playforce [query] — Force play.
-/vplayforce [query] — Force video play.
-/playlist — View saved server playlists.
-/deleteplaylist — Delete a saved playlist.
+HELP_12 = """✦ **SHUFFLE COMMANDS ✦**
 
-**v** means video play; **force** starts the requested track immediately."""
+◯ /shuffle : Randomly changes the order of the current queue.
+◯ /cshuffle : Shuffles the channel-play queue."""
 
-HELP_12 = """🔀 **SHUFFLE COMMANDS**
+HELP_13 = """✦ **SEEK COMMANDS ✦**
 
-/shuffle — Randomly shuffle the current queue.
-/cshuffle — Shuffle the channel-play queue."""
+◯ /seek [time] : Forward-seeks the current track.
+◯ /seekback [time] : Moves the current track backward.
+◯ /cseek [time] : Forward-seeks channel-play music.
+◯ /cseekback [time] : Moves channel-play music backward."""
 
-HELP_13 = """⏩ **SEEK COMMANDS**
+HELP_14 = """✦ **SONG COMMANDS ✦**
 
-/seek [time] — Forward seek to a duration.
-/seekback [time] — Seek backward.
-/cseek [time] — Forward seek in channel-play mode.
-/cseekback [time] — Backward seek in channel-play mode."""
+◯ /song [track/link] : Downloads a supported track as audio/video.
+◯ /lyrics [music name] : Searches lyrics for the requested track.
+◯ /queue : Shows the current music queue.
+◯ /cqueue : Shows the channel-play queue."""
 
-HELP_14 = """🎵 **SONG COMMANDS**
+HELP_15 = """✦ **SPEED COMMANDS ✦**
 
-/song [track] — Download a YouTube track as supported by the bot.
-/lyrics [music name] — Search lyrics for a track.
-/queue — View the current music queue.
-/cqueue — View the channel-play queue."""
+◯ /speed [value] : Changes playback speed when supported by the active player.
 
-HELP_15 = """⚡ **SPEED COMMANDS**
-
-/speed [value] — Change playback speed when supported by the active player.
-
-Use the value accepted by your current player configuration."""
+Use the value accepted by the current player configuration."""
