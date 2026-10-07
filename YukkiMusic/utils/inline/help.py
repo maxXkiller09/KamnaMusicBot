@@ -26,12 +26,13 @@ def help_pannel(_, START: Union[bool, int] = None):
 
     rows = []
     for start in range(0, len(labels), 3):
+        chunk = labels[start:start + 3]
         rows.append([
             InlineKeyboardButton(
-                text=labels[start + offset],
+                text=label,
                 callback_data=f"help_callback hb{start + offset + 1}",
             )
-            for offset in range(3)
+            for offset, label in enumerate(chunk)
         ])
 
     if START:
