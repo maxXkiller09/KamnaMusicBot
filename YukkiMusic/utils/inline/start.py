@@ -11,7 +11,7 @@ from typing import Union
 
 from pyrogram.types import InlineKeyboardButton
 
-from config import GITHUB_REPO, SUPPORT_CHANNEL, SUPPORT_GROUP
+import config
 from YukkiMusic import app
 
 
@@ -27,19 +27,19 @@ def start_pannel(_):
             ),
         ],
     ]
-    if SUPPORT_CHANNEL and SUPPORT_GROUP:
+    if config.SUPPORT_CHANNEL and config.SUPPORT_GROUP:
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text=_["S_B_4"], url=f"{SUPPORT_CHANNEL}"
+                    text=_["S_B_4"], url=f"{config.SUPPORT_CHANNEL}"
                 ),
                 InlineKeyboardButton(
-                    text=_["S_B_3"], url=f"{SUPPORT_GROUP}"
+                    text=_["S_B_3"], url=f"{config.SUPPORT_GROUP}"
                 ),
             ]
         )
     else:
-        if SUPPORT_CHANNEL:
+        if config.SUPPORT_CHANNEL:
             buttons.append(
                 [
                     InlineKeyboardButton(
@@ -47,7 +47,7 @@ def start_pannel(_):
                     )
                 ]
             )
-        if SUPPORT_GROUP:
+        if config.SUPPORT_GROUP:
             buttons.append(
                 [
                     InlineKeyboardButton(
@@ -102,17 +102,17 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
             )
         ]
     )
-    if GITHUB_REPO and OWNER:
+    if config.GITHUB_REPO and OWNER:
         buttons.append(
             [
                 InlineKeyboardButton(text=_["S_B_7"], user_id=OWNER),
                 InlineKeyboardButton(
-                    text=_["S_B_6"], url=f"{GITHUB_REPO}"
+                    text=_["S_B_6"], url=f"{config.GITHUB_REPO}"
                 ),
             ]
         )
     else:
-        if GITHUB_REPO:
+        if config.GITHUB_REPO:
             buttons.append(
                 [
                     InlineKeyboardButton(
