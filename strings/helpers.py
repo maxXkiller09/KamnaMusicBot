@@ -127,12 +127,13 @@ Use the value accepted by the current player configuration."""
 
 HELP_16 = """✦ **CLONE COMMANDS ✦**
 
-◯ /clone [BOT_TOKEN] : Register a separate-token clone bot.
-◯ /myclones : Shows your registered clone bots.
-◯ /cloneinfo : Shows clone configuration/status to authorized management users.
-◯ /delclone [clone] : Removes a registered clone.
-◯ /broadcast : Broadcasts the same message to the main bot and registered clones.
+◯ /clone : Shows the ₹399 clone payment QR and instructions.
+◯ /clonepay [TRANSACTION_ID] : Submit payment proof by replying to the screenshot.
+◯ /myclones : Shows your approved clone registrations.
+◯ /cloneinfo : Owner-only clone request status.
 
-🎨 Each clone will use the same music assignment/codebase while its bot identity and supported settings can be customized.
+💳 Payment is manually verified. The owner approves or rejects each request.
 
-🔐 Clone tokens and internal configuration stay hidden from normal users."""
+🎨 Approved clone registrations use the same music assignment/codebase; runtime activation and separate bot-process setup are handled separately.
+
+🔐 Never send a BotFather token in chat. Clone credentials stay out of normal-user messages."""
