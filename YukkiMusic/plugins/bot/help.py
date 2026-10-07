@@ -15,7 +15,6 @@ from pyrogram.types import InlineKeyboardMarkup, Message
 from config import BANNED_USERS
 from strings import get_command, get_string, helpers
 from YukkiMusic import app
-from YukkiMusic.misc import SUDOERS
 from YukkiMusic.utils import help_pannel
 from YukkiMusic.utils.database import get_lang, is_commanddelete_on
 from YukkiMusic.utils.decorators.language import LanguageStart, languageCB
@@ -90,11 +89,6 @@ async def helper_cb(client, CallbackQuery, _):
     if len(parts) < 2:
         return
     cb = parts[1]
-
-    if cb == "hb5" and CallbackQuery.from_user.id not in SUDOERS:
-        return await CallbackQuery.answer(
-            "This category is restricted.", show_alert=True
-        )
 
     try:
         await CallbackQuery.answer()
