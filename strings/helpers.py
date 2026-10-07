@@ -124,3 +124,15 @@ HELP_15 = """✦ **SPEED COMMANDS ✦**
 ◯ /speed [value] : Changes playback speed when supported by the active player.
 
 Use the value accepted by the current player configuration."""
+
+HELP_16 = """✦ **CLONE COMMANDS ✦**
+
+◯ /clone [BOT_TOKEN] : Register a separate-token clone bot.
+◯ /myclones : Shows your registered clone bots.
+◯ /cloneinfo : Shows clone configuration/status to authorized management users.
+◯ /delclone [clone] : Removes a registered clone.
+◯ /broadcast : Broadcasts the same message to the main bot and registered clones.
+
+🎨 Each clone will use the same music assignment/codebase while its bot identity and supported settings can be customized.
+
+🔐 Clone tokens and internal configuration stay hidden from normal users."""
