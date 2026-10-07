@@ -31,30 +31,26 @@ def start_pannel(_):
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text=_["S_B_4"], url=f"{config.SUPPORT_CHANNEL}"
+                    text=_["S_B_4"], url=config.SUPPORT_CHANNEL
                 ),
                 InlineKeyboardButton(
-                    text=_["S_B_3"], url=f"{config.SUPPORT_GROUP}"
+                    text=_["S_B_3"], url=config.SUPPORT_GROUP
                 ),
             ]
         )
     else:
         if config.SUPPORT_CHANNEL:
-            buttons.append(
-                [
-                    InlineKeyboardButton(
-                        text=_["S_B_4"], url=f"{SUPPORT_CHANNEL}"
-                    )
-                ]
-            )
+            buttons.append([
+                InlineKeyboardButton(
+                    text=_["S_B_4"], url=config.SUPPORT_CHANNEL
+                )
+            ])
         if config.SUPPORT_GROUP:
-            buttons.append(
-                [
-                    InlineKeyboardButton(
-                        text=_["S_B_3"], url=f"{SUPPORT_GROUP}"
-                    )
-                ]
-            )
+            buttons.append([
+                InlineKeyboardButton(
+                    text=_["S_B_3"], url=config.SUPPORT_GROUP
+                )
+            ])
     return buttons
 
 
@@ -66,34 +62,30 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
             )
         ]
     ]
-    if SUPPORT_CHANNEL and SUPPORT_GROUP:
+    if config.SUPPORT_CHANNEL and config.SUPPORT_GROUP:
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text=_["S_B_4"], url=f"{SUPPORT_CHANNEL}"
+                    text=_["S_B_4"], url=config.SUPPORT_CHANNEL
                 ),
                 InlineKeyboardButton(
-                    text=_["S_B_3"], url=f"{SUPPORT_GROUP}"
+                    text=_["S_B_3"], url=config.SUPPORT_GROUP
                 ),
             ]
         )
     else:
-        if SUPPORT_CHANNEL:
-            buttons.append(
-                [
-                    InlineKeyboardButton(
-                        text=_["S_B_4"], url=f"{SUPPORT_CHANNEL}"
-                    )
-                ]
-            )
-        if SUPPORT_GROUP:
-            buttons.append(
-                [
-                    InlineKeyboardButton(
-                        text=_["S_B_3"], url=f"{SUPPORT_GROUP}"
-                    )
-                ]
-            )
+        if config.SUPPORT_CHANNEL:
+            buttons.append([
+                InlineKeyboardButton(
+                    text=_["S_B_4"], url=config.SUPPORT_CHANNEL
+                )
+            ])
+        if config.SUPPORT_GROUP:
+            buttons.append([
+                InlineKeyboardButton(
+                    text=_["S_B_3"], url=config.SUPPORT_GROUP
+                )
+            ])
     buttons.append(
         [
             InlineKeyboardButton(
@@ -107,27 +99,23 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
             [
                 InlineKeyboardButton(text=_["S_B_7"], user_id=OWNER),
                 InlineKeyboardButton(
-                    text=_["S_B_6"], url=f"{config.GITHUB_REPO}"
+                    text=_["S_B_6"], url=config.GITHUB_REPO
                 ),
             ]
         )
     else:
         if config.GITHUB_REPO:
-            buttons.append(
-                [
-                    InlineKeyboardButton(
-                        text=_["S_B_6"], url=f"{GITHUB_REPO}"
-                    ),
-                ]
-            )
+            buttons.append([
+                InlineKeyboardButton(
+                    text=_["S_B_6"], url=config.GITHUB_REPO
+                )
+            ])
         if OWNER:
-            buttons.append(
-                [
-                    InlineKeyboardButton(
-                        text=_["S_B_7"], user_id=OWNER
-                    ),
-                ]
-            )
+            buttons.append([
+                InlineKeyboardButton(
+                    text=_["S_B_7"], user_id=OWNER
+                )
+            ])
     buttons.append(
         [InlineKeyboardButton(text=_["ST_B_6"], callback_data="LG")]
     )
