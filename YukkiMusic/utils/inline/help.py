@@ -21,6 +21,7 @@ def help_pannel(_, START: Union[bool, int] = None):
         "G-BAN", "LOOP", "LOG",
         "PING", "PLAY", "SHUFFLE",
         "SEEK", "SONG", "SPEED",
+        "CLONE",
     ]
 
     rows = []
