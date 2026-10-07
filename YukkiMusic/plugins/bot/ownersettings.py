@@ -76,6 +76,10 @@ OWNER_COMMANDS = [
     "setwelcome", "setimage", "setsupport", "setupdates",
     "setowner", "addowner", "delowner", "setbotname",
     "setbotlink", "setgithub", "setloggroup", "settings",
+    "setplaylistimage", "setglobalimage", "setstatsimage",
+    "setaudioimage", "setvideoimage", "setstreamimage",
+    "setyoutubeimage", "setspotifyartistimage", "setspotifyalbumimage",
+    "setspotifyplaylistimage",
 ]
 
 
@@ -104,6 +108,30 @@ async def owner_settings(client, message: Message):
             "• /start updated\n"
             "• Photo also updates /ping\n"
             "• Owner only"
+        )
+
+    image_commands = {
+        "setplaylistimage": ("PLAYLIST_IMG_URL", "Playlist"),
+        "setglobalimage": ("GLOBAL_IMG_URL", "Global"),
+        "setstatsimage": ("STATS_IMG_URL", "Stats"),
+        "setaudioimage": ("TELEGRAM_AUDIO_URL", "Audio"),
+        "setvideoimage": ("TELEGRAM_VIDEO_URL", "Video"),
+        "setstreamimage": ("STREAM_IMG_URL", "Stream"),
+        "setyoutubeimage": ("YOUTUBE_IMG_URL", "Youtube"),
+        "setspotifyartistimage": ("SPOTIFY_ARTIST_IMG_URL", "SpotifyArtist"),
+        "setspotifyalbumimage": ("SPOTIFY_ALBUM_IMG_URL", "SpotifyAlbum"),
+        "setspotifyplaylistimage": ("SPOTIFY_PLAYLIST_IMG_URL", "SpotifyPlaylist"),
+    }
+
+    if command in image_commands:
+        key, target = image_commands[command]
+        path = await _set_media(message, target)
+        if path.startswith("❌"):
+            return await message.reply_text(path)
+        setattr(config, key, path)
+        _set(key, path)
+        return await message.reply_text(
+            f"✅ {target} image updated.\n• Owner only"
         )
 
     if command == "setsupport":
